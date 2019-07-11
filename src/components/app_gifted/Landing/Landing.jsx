@@ -76,7 +76,11 @@ class LandingPage extends Component {
   _initSearchByKeyword = (input_value) => {
 
     if(input_value === "trending" || input_value === "random"){
-      this.fetchTrendingGIFList();
+      this.setState({
+        searching: false,
+        searchFilterKey: ''
+      })
+      return this.fetchTrendingGIFList();
     } else {
       
       if(this.state.searchFilterKey !== input_value){

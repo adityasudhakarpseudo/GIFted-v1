@@ -284,6 +284,7 @@ body{
         text-transform: uppercase;
         background-color: #eee;
         font-weight: 600;
+        overflow-x: auto; 
         .alphabet{
           padding: 5px;
           cursor: pointer;
@@ -404,6 +405,30 @@ body{
             }
           }
         }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1149px) {
+    .navbar.navbar-default{
+      .navbar-main{
+        display: none;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1000px) {
+    .wrapper-page-body{
+      .wrapper-filters{
+        .section-header{
+          display: none;
+        }
+        .filter-alphabets{
+          margin-top: 15px;
+        }
+      }
+      .gif-items-list{
+        height: calc(100% - 70px);
       }
     }
   }

@@ -1,0 +1,9 @@
+{
+  "root_url": "//api.giphy.com/v1/",
+  "app_gifted": {
+    "trending_gifs" : "gifs/trending",
+    "trending_stickers" : "stickers/trending",
+    "search_gif_by_keyword" : "gifs/search",
+    "search_stickers_by_keyword" : "stickers/search"
+  }
+}

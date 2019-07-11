@@ -1,26 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+
+/**
+ * Import React & Redux here
+ */
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+
+/**
+ * redux-thunk is used to dispatch async methods inside redux
+ */
+import thunk from 'redux-thunk';
+
+
+import Landing from './components/app_gifted/Landing/Landing';
+
+// const store = createStore(
+//   applyMiddleware(thunk)
+// );
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    
+      <Landing></Landing>
+    
   );
+
 }
 
 export default App;
+
+

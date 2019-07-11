@@ -28,7 +28,8 @@ class LandingPage extends Component {
       },
       GIFItemsList: [],
       requiredListLoading: true,
-      searching: false
+      searching: false,
+      searchFilterKey: ''
     }
   }
 
@@ -73,25 +74,44 @@ class LandingPage extends Component {
   }
 
   _initSearchByKeyword = (input_value) => {
-    let url_config = {
-      method: 'get',
-    };
-    this.setState({
-      requiredListLoading: false,
-      searching: true
-    });
-    let ajax_contents = {
-      formData: null,
-      url_config: url_config,
-      callbackFunction: this._callbackSearchWithKeyword,
-      params: {
-        limit: 0,
-        offset: 0,
-        q: input_value
-      }
-    }
 
-    this.props.dispatch(searchGIFByKeyword(ajax_contents))
+    if(input_value === "trending" || input_value === "random"){
+      this.fetchTrendingGIFList();
+    } else {
+      
+      if(this.state.searchFilterKey !== input_value){
+        this.setState({
+          searchFilterKey: input_value
+        });
+      }
+
+      let url_config = {
+        method: 'get',
+      };
+      this.setState({
+        requiredListLoading: false,
+        searching: true
+      });
+      let ajax_contents = {
+        formData: null,
+        url_config: url_config,
+        callbackFunction: this._callbackSearchWithKeyword,
+        params: {
+          limit: 0,
+          offset: 0,
+          q: input_value
+        }
+      }
+  
+      this.props.dispatch(searchGIFByKeyword(ajax_contents))
+    }
+    
+  }
+
+  _updateSearchKey = (e) => {
+    this.setState({
+      searchFilterKey: e.target ? e.target.value : e
+    });
   }
 
   _callbackSearchWithKeyword = (response) => {
@@ -108,14 +128,19 @@ class LandingPage extends Component {
         <Navbar></Navbar>
         <SearchBar
           initSearchByKeyword={this._initSearchByKeyword}
+          updateSearchKey={this._updateSearchKey}
+          searchFilterKey={this.state.searchFilterKey}
+          fetchTrendingGIFList={this.fetchTrendingGIFList}
         ></SearchBar>
         {/* <SearchFilter></SearchFilter> */}
         {
-          this.props.trendingGIFList.response && this.props.trendingGIFList.response.data.length && !this.state.searching ?
+          !this.props.trendingGIFList.loading && this.props.trendingGIFList.response && this.props.trendingGIFList.response.data.length && !this.state.searching ?
             <PageBody
               trendingGIFList={this.state.GIFItemsList}
               loadMoreGIFItems={this._loadMoreGIFItems}
+              searchFilterKey={this.state.searchFilterKey}
               requiredListLoading={this.state.requiredListLoading}
+              initSearchByKeyword={this._initSearchByKeyword}
             >
             </PageBody>
           :

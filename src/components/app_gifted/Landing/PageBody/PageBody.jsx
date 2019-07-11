@@ -19,12 +19,19 @@ class PageBody extends Component{
     }
   }
 
+  _initSearchByKeyword = (filter_search) => {
+    this.props.initSearchByKeyword(filter_search);
+  }
+
   render(){
     console.log(this.props);
     return(
       <div className='wrapper-page-body'>
         <div className='wd-1150'>
-          <Filters></Filters>
+          <Filters
+            searchFilterKey={this.props.searchFilterKey}
+            initSearchByKeyword={this._initSearchByKeyword}
+          ></Filters>
           <div className='col-sm-12 no-padding gif-items-list scroll-container' onScroll={this._GIFItemsListScrolled}>
             <div className='grid'>
               {
@@ -40,7 +47,9 @@ class PageBody extends Component{
                         null
                   ))
                 :
-                  null
+                  <div className='col col-sm-12 no-padding text-center no-results-found'>
+                    <img src="landing/images/no-result-found.png" width={250} height='auto' alt='No GIF Found'></img>
+                  </div>
               }
             </div>
             {

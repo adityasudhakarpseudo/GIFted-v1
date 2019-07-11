@@ -246,7 +246,7 @@ body{
         padding-top: 20px;
         padding-bottom: 20px;
         height: 100%;
-        font-size: 15px;
+        font-size: 17px;
         height: 58px; 
         border: 1px solid #dddfff;
         border-right: none;
@@ -275,7 +275,7 @@ body{
       .section-header{
         font-size: 15px;
         color: slategray;
-        padding: 15px 0;
+        padding: 15px;
       }
       .filter-alphabets{
         font-size: 15px;
@@ -283,12 +283,13 @@ body{
         padding: 15px 10px;
         text-transform: uppercase;
         background-color: #eee;
+        font-weight: 600;
         .alphabet{
           padding: 5px;
           cursor: pointer;
         }
-        .alphabet.selected{
-          font-weight: 600;
+        .alphabet.active{
+          color: #4382fe;
         }
       }
     }

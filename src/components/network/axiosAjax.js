@@ -148,7 +148,7 @@ class AxiosAjax {
 					/**
 					 * Redirect to login page
 					 */
-					window.location.href = '/login';
+					// window.location.href = '/login';
 				} else {
 					return res.data;
 				}

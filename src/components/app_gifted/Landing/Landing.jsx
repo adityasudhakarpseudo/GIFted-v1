@@ -138,7 +138,7 @@ class LandingPage extends Component {
         ></SearchBar>
         {/* <SearchFilter></SearchFilter> */}
         {
-          !this.props.trendingGIFList.loading && this.props.trendingGIFList.response && this.props.trendingGIFList.response.data.length && !this.state.searching ?
+          this.props.trendingGIFList.response && this.props.trendingGIFList.response.data.length && !this.state.searching ?
             <PageBody
               trendingGIFList={this.state.GIFItemsList}
               loadMoreGIFItems={this._loadMoreGIFItems}

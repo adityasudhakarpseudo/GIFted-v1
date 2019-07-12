@@ -24,7 +24,6 @@ class PageBody extends Component{
   }
 
   render(){
-    console.log(this.props);
     return(
       <div className='wrapper-page-body'>
         <div className='wd-1150'>

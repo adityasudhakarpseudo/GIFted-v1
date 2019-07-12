@@ -23,7 +23,6 @@ const store = createStore(
   rootReducer,
   applyMiddleware(thunk),
 );
-const MyContext = React.createContext();
 
 ReactDOM.render(
 <Provider store={store}>

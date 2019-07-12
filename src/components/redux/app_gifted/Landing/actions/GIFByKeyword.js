@@ -15,7 +15,7 @@ export const FETCH_GIF_BY_KEYWORD_ERROR = 'FETCH_GIF_BY_KEYWORD_ERROR';
 let prepareToSearchGIFByKeyword = (ajax_config) => {
   let raw_url, method, ajax;
 
-  if (ajax_config.url_config.method == 'post' || ajax_config.url_config.method == 'put') {
+  if (ajax_config.url_config.method === 'post' || ajax_config.url_config.method === 'put') {
     ajax = new AxiosAjax({ headers: { 'Content-Type': 'multipart/form-data' } });
   } else {
     ajax = new AxiosAjax();
@@ -34,8 +34,10 @@ let prepareToSearchGIFByKeyword = (ajax_config) => {
 
 let convertJSONTOParams = (json) => {
   return Object.keys(json).map(function (k) {
-    if (k != 'model_id') {
+    if (k !== 'model_id') {
       return encodeURIComponent(k) + '=' + encodeURIComponent(json[k])
+    } else{
+      return ''
     }
   }).join('&')
 }

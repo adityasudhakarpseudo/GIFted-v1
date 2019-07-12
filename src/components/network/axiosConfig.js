@@ -88,7 +88,7 @@ const axiosConfig = {
     // or `undefined`), the promise will be resolved; otherwise, the promise will be
     // rejected.
     validateStatus: function (status) {
-        if (status == '401' || status == 401) {
+        if (status === '401' || status === 401) {
             alert('Session Not Authorized')
         } else {
             return status >= 200 && status < 300; // default
